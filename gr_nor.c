@@ -3,7 +3,7 @@
 
 
 int main() {
-    int tableau[] = {1,2,1,3,1,4,1,5,6,6}; // Déclaration et initialisation du tableau
+    int tableau[] = {6,6,1,2,1,3,1,4,1,5}; // Déclaration et initialisation du tableau
 
  // Calculer le nombre d'éléments dans le tableau
     int n = sizeof(tableau) / sizeof(tableau[0]);
@@ -43,7 +43,7 @@ int main() {
         printf("%d ", tableau_elements_uniques[i]);
     }
     printf("\n");
-
+    int wtu[taille_elements_uniques];
     // Les positions paires représentent le début d'une arête et impaires la fin de celle-ci
     for (int i=0;i<taille_elements_uniques;i++){
         for (int j=0;j<n;j++){
@@ -52,6 +52,7 @@ int main() {
                 if (j % 2 == 0){
                     printf("pair ");
                     printf("%d \n", tableau[j+1]);
+                    
                 }
                     else {
                     printf("impair ");
