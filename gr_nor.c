@@ -47,6 +47,18 @@ int main() {
     // Les positions paires représentent le début d'une arête et impaires la fin de celle-ci
     for (int i=0;i<taille_elements_uniques;i++){
         for (int j=0;j<n;j++){
+            if (tableau_elements_uniques[i]==tableau[j]){
+                printf("%d %d ", j,tableau_elements_uniques[i]);
+                if (j % 2 == 0){
+                    printf("pair ");
+                    printf("%d \n", tableau[j+1]);
+                }
+                    else {
+                    printf("impair ");
+                    printf("%d \n", tableau[j-1]);
+                    }
+                
+            }
 
         }
     }
