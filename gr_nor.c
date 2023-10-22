@@ -13,7 +13,8 @@ int main() {
     // Pour afficher les éléments du tableau :
     printf("Contenu du tableau :\n");
     for (int i = 0; i < n; i++) {
-        printf("Élément %d : %d\n", i, tableau[i]);
+        //printf("Élément %d : %d\n", i, tableau[i]);
+        printf("%d ", tableau[i]);
     }
 // Déclaration et initialisation d'un tableau dynamique pour stocker les éléments uniques
     int tableau_elements_uniques[n];
@@ -36,6 +37,7 @@ int main() {
             tableau_elements_uniques[taille_elements_uniques++] = tableau[i];
         }
     }
+  printf("\n");
   printf("Éléments uniques :\n");
     for (int i = 0; i < taille_elements_uniques; i++) {
         printf("%d ", tableau_elements_uniques[i]);
