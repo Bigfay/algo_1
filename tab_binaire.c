@@ -19,7 +19,6 @@ int main() {
 // Déclaration et initialisation d'un tableau dynamique pour stocker les éléments uniques
     int tableau_elements_uniques[n];
     int taille_elements_uniques = 0;
-    int wt_0[n];
 
     // Parcourir le tableau d'origine
     for (int i = 0; i < n; i++) {
@@ -51,10 +50,10 @@ int main() {
     for (int i=0;i<taille_elements_uniques;i++){
         for (int j=0;j<n;j++){
             if (tableau_elements_uniques[i]==tableau[j]){
-                printf("    %d %d ", j,tableau_elements_uniques[i]);
+                printf("%d      %d ", j,tableau_elements_uniques[i]);
                 if (j % 2 == 0){
                     printf("pair ");
-                    printf(" %d ", tableau[j-1]);
+                    printf(" %d ", tableau[j+1]);
                     r = tableau[j+1];
                 }
                     else {
@@ -62,21 +61,21 @@ int main() {
                     printf(" %d ", tableau[j-1]);
                     r = tableau[j-1];
                     }
-                printf("couple %d %d \n", tableau[j],r); 
+                printf("couple %d %d      ", tableau[j],r); 
                 for (int k = 0; k<taille_elements_uniques;k++){
-                    if (k+1 == r || k+1 == tableau[j]){
+                    if (k+1 == r || k+1 == tableau_elements_uniques[i]){
                         wtu[k]=1;
                     }
                         else {
                         wtu[k]=0;
                         }
                     printf(" %d ", wtu[k]);
-
-
                 }
+printf("\n");
             }
-
-        }
+        } 
     }
+    printf("\n");
+    
     return 0;
 }
