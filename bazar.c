@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
-void couples_binaires(int a,int n[], int counter) {
-    int wtf[10];
-    int r;
-    for (int k = 0; k<a;k++){
-                    if (k+1 == r || k+1 == n[counter]){
+
+void couples_binaires(int a,int nombre[], int counter, int fer) {
+    int wtf[a];
+    for (int k = 0;k<a;k++){
+                    if (k+1 == fer || k+1 == nombre[counter]){
                         wtf[k]=1;
                     }
                         else {
@@ -75,24 +75,27 @@ int main() {
                     r = tableau[j-1];
                     }
                 printf("couple %d %d      ", tableau[j],r); 
-                for (int k = 0; k<taille_elements_uniques;k++){
+                /*for (int k = 0; k<taille_elements_uniques;k++){
                     if (k+1 == r || k+1 == tableau_elements_uniques[i]){
                         wtu[k]=1;
                     }
                         else {
                         wtu[k]=0;
                         }
-                    printf(" %d ", wtu[k]);
+                    printf(" %d ", wtu[k]);  */
+                    couples_binaires(taille_elements_uniques,tableau, j,r);
+                    printf("\n");               
                 }
-printf("\n");
+//printf("\n");
             }
         } 
-    }
-    printf("\n");
+    
+//    printf("\n");
   //parcourir le tableau initiale avec les pairs et les impairs et comparer le courant avec le suivant
-  for (int i=0; i < n-2;i=i+2){
-    printf("premier couple %d %d      ", tableau[i],tableau[i+1]); 
-    printf("deuxième couple %d %d \n", tableau[i+2],tableau[i+3]); 
+  for (int z=0; z < n-2;z=z+2){
+    printf("premier couple %d %d      ", tableau[z],tableau[z+1]); 
+    //printf("deuxième couple %d %d \n", tableau[z+2],tableau[z+3]); 
   }  
     return 0;
-}
+    }
+
