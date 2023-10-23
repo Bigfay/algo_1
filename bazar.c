@@ -75,14 +75,7 @@ int main() {
                     r = tableau[j-1];
                     }
                 printf("couple %d %d      ", tableau[j],r); 
-                /*for (int k = 0; k<taille_elements_uniques;k++){
-                    if (k+1 == r || k+1 == tableau_elements_uniques[i]){
-                        wtu[k]=1;
-                    }
-                        else {
-                        wtu[k]=0;
-                        }
-                    printf(" %d ", wtu[k]);  */
+
                     couples_binaires(taille_elements_uniques,tableau, j,r);
                     printf("\n");               
                 }
