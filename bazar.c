@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-void couples_binaires(int a,int nombre[], int counter, int fer) {
-    int wtf[a];
+void couples_binaires(int a,int nombre[], int counter, int fer,int wtf[a]) {
+    //int wtf[a];
     for (int k = 0;k<a;k++){
                     if (k+1 == fer || k+1 == nombre[counter]){
                         wtf[k]=1;
@@ -51,6 +51,9 @@ int main() {
         }
     }
     int wtu[taille_elements_uniques];
+    int wt_0[taille_elements_uniques];
+    int wt_1[taille_elements_uniques];
+
 
   printf("\n");
   printf("Éléments uniques: ");
@@ -76,18 +79,30 @@ int main() {
                     }
                 printf("couple %d %d      ", tableau[j],r); 
 
-                    couples_binaires(taille_elements_uniques,tableau, j,r);
+                    couples_binaires(taille_elements_uniques,tableau, j,r,wt_0);
                     printf("\n");               
                 }
 //printf("\n");
             }
-        } 
-    
+        }  
 //    printf("\n");
   //parcourir le tableau initiale avec les pairs et les impairs et comparer le courant avec le suivant
-  for (int z=0; z < n-2;z=z+2){
-    printf("premier couple %d %d      ", tableau[z],tableau[z+1]); 
-    //printf("deuxième couple %d %d \n", tableau[z+2],tableau[z+3]); 
+
+    couples_binaires(taille_elements_uniques,tableau, 0,tableau[1],wt_1);
+  // dupliquer le wt_1 dans le wt_0
+    for(int i = 0; i < taille_elements_uniques; ++i) {
+        wt_0[i]=wt_1[i];
+        printf("wt_0  wt_1%d %d  ", wt_0[i],wt_1[i]); 
+    }
+    printf("\n");
+    //wt_0=couples_binaires(taille_elements_uniques,tableau, 0,tableau[1],wt_1);
+  for (int z=2; z < n-2;z=z+2){
+    printf("premier couple %d %d  ", tableau[z],tableau[z+1]); 
+    couples_binaires(taille_elements_uniques,tableau, z,tableau[z+1],wt_1);
+
+    //printf("    deuxième couple    %d %d  ", tableau[z+2],tableau[z+3]); 
+    //couples_binaires(taille_elements_uniques,tableau, z+2,tableau[z+3],wt_1);
+     printf("\n"); 
   }  
     return 0;
     }
