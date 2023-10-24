@@ -16,7 +16,7 @@ void couples_binaires(int a,int nombre[], int counter, int fer,int wtf[a]) {
 
 
 int main() {
-    int tableau[] = {6,6,1,2,1,3,1,4,1,5}; // Déclaration et initialisation du tableau
+    int tableau[] = {2,5,1,2,1,3,1,4,1,5}; // Déclaration et initialisation du tableau
 
  // Calculer le nombre d'éléments dans le tableau
     int n = sizeof(tableau) / sizeof(tableau[0]);
@@ -92,18 +92,42 @@ int main() {
   // dupliquer le wt_1 dans le wt_0
     for(int i = 0; i < taille_elements_uniques; ++i) {
         wt_0[i]=wt_1[i];
-        printf("wt_0  wt_1%d %d  ", wt_0[i],wt_1[i]); 
+        //printf("wt_0  wt_1%d %d  ", wt_0[i],wt_1[i]); 
     }
     printf("\n");
     //wt_0=couples_binaires(taille_elements_uniques,tableau, 0,tableau[1],wt_1);
+    //comparaison entre wt_0 et wt_1
+    //wt_0 = wt_1 =1 alors fusionner les uns
+    int merge =0;
   for (int z=2; z < n-2;z=z+2){
     printf("premier couple %d %d  ", tableau[z],tableau[z+1]); 
     couples_binaires(taille_elements_uniques,tableau, z,tableau[z+1],wt_1);
-
+    for (int j=0;j<taille_elements_uniques;j++){
+        if (wt_0[j]==wt_1[j] && wt_0[j] ==1){
+            j = taille_elements_uniques;
+            merge=1;
+        }
+    }
+    
+    if (merge ==1) {
+        //printf("\n"); 
+        //printf("wt_0  :  ");
+        for (int k=0; k < taille_elements_uniques;k++){
+            if (wt_1[k]==1){
+                    wt_0[k]=1;
+            }
+        }
+        merge =0;
+    }
+    for (int i = 0;i<taille_elements_uniques;i++){
+        printf(" %d ", wt_0[i]); 
+    }
+    printf("\n"); 
+    }
     //printf("    deuxième couple    %d %d  ", tableau[z+2],tableau[z+3]); 
     //couples_binaires(taille_elements_uniques,tableau, z+2,tableau[z+3],wt_1);
      printf("\n"); 
-  }  
+    
     return 0;
     }
 
