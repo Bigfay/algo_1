@@ -12,14 +12,16 @@ void couples_binaires(int a,int nombre[], int counter, int fer,int wtf[a]) {
                         }
                     printf(" %d ", wtf[k]);
     }
+    //printf("       \n");
 }
 
 
 int main() {
-    int tableau[] = {2,5,1,2,1,3,1,4,1,5}; // Déclaration et initialisation du tableau
+    int tableau[] = {6,5,1,2,1,1,4,4,2,3,2,5}; // Déclaration et initialisation du tableau
 
  // Calculer le nombre d'éléments dans le tableau
     int n = sizeof(tableau) / sizeof(tableau[0]);
+    int fin=0;
 
     // Afficher le nombre d'éléments
     printf("Nombre d'éléments dans le tableau : %d\n", n);
@@ -99,15 +101,17 @@ int main() {
     //comparaison entre wt_0 et wt_1
     //wt_0 = wt_1 =1 alors fusionner les uns
     int merge =0;
-  for (int z=2; z < n-2;z=z+2){
-    printf("premier couple %d %d  ", tableau[z],tableau[z+1]); 
+  for (int z=2; z < n;z=z+2){
+  //for (int z=2; z < n-2;z=z+2){
+    //printf("premier couple %d %d  ", tableau[z],tableau[z+1]); 
     couples_binaires(taille_elements_uniques,tableau, z,tableau[z+1],wt_1);
     for (int j=0;j<taille_elements_uniques;j++){
         if (wt_0[j]==wt_1[j] && wt_0[j] ==1){
+            
             j = taille_elements_uniques;
             merge=1;
         }
-    }
+        }
     
     if (merge ==1) {
         //printf("\n"); 
@@ -117,12 +121,41 @@ int main() {
                     wt_0[k]=1;
             }
         }
-        merge =0;
     }
+        else {
+            merge =0;
+            for (int k=0; k < taille_elements_uniques;k++){
+            wt_0[k]=wt_1[k];
+            }
+        }
+    printf("      ");
     for (int i = 0;i<taille_elements_uniques;i++){
         printf(" %d ", wt_0[i]); 
     }
     printf("\n"); 
+
+    int somme = 0;
+
+    for (int i = 0; i < taille_elements_uniques; ++i) {
+        somme += wt_0[i];
+        merge=0;
+    }
+    if (somme==taille_elements_uniques){
+        printf("ce graphe est connexe \n");
+        break;
+    }
+    else {
+         if (z==n-2 && somme!=taille_elements_uniques){
+             z=-2;
+             printf("DEUXIEME T3UR %d \n",fin);
+             fin=fin+1;
+             if (fin==3) {
+             printf("ce graphe n'est pas connexe \n");
+             break;
+             }
+         };
+     }
+
     }
     //printf("    deuxième couple    %d %d  ", tableau[z+2],tableau[z+3]); 
     //couples_binaires(taille_elements_uniques,tableau, z+2,tableau[z+3],wt_1);
