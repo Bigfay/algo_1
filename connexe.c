@@ -17,7 +17,8 @@ void couples_binaires(int a,int nombre[], int counter, int fer,int wtf[a]) {
 
 
 int main() {
-    int tableau[] = {1,2,2,6,3,5,4,5,1,6,3,4,2,5}; // Déclaration et initialisation du tableau
+    //int tableau[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Déclaration et initialisation du tableau
+    int tableau[] = {7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3}; // Déclaration et initialisation du tableau
 
  // Calculer le nombre d'éléments dans le tableau
     int n = sizeof(tableau) / sizeof(tableau[0]);
@@ -57,6 +58,7 @@ int main() {
     int wt_1[taille_elements_uniques];
 
   printf("\n");
+  printf("nombre d'éléments uniques : %d \n", taille_elements_uniques);
   printf("Éléments uniques: ");
     for (int i = 0; i < taille_elements_uniques; i++) {
         printf("%d ", tableau_elements_uniques[i]);
@@ -95,23 +97,19 @@ int main() {
             if (wt_1[k]==1){
                     wt_0[k]=1;
             }
+            merge=0;
         }
     }
-        else {
-            merge =0;
-            for (int k=0; k < taille_elements_uniques;k++){
-            wt_0[k]=wt_1[k];
-            }
-        }
     printf("      ");
     //affichage en notation binaire
     for (int i = 0;i<taille_elements_uniques;i++){
         printf(" %d ", wt_0[i]); 
     }
     printf("\n"); 
-
+    somme=0;
     for (int i = 0; i < taille_elements_uniques; ++i) {
         somme += wt_0[i];
+        //printf("\n somme : %d\n", somme);
         merge=0;
     }
     if (somme==taille_elements_uniques){
@@ -124,7 +122,7 @@ int main() {
              z=-2;
              printf("DEUXIEME T3UR %d \n",fin);
              fin=fin+1;
-             if (fin==3) {
+             if (fin==4) {
              printf("ce graphe n'est pas connexe \n");
              est_connexe = false;
              break;
