@@ -1,5 +1,18 @@
 #include <stdio.h>
 #include <stdbool.h>
+void couples_binaires(int a,int n[], int counter) {
+    int wtf[10];
+    int r;
+    for (int k = 0; k<a;k++){
+                    if (k+1 == r || k+1 == n[counter]){
+                        wtf[k]=1;
+                    }
+                        else {
+                        wtf[k]=0;
+                        }
+                    printf(" %d ", wtf[k]);
+    }
+}
 
 
 int main() {
@@ -11,7 +24,7 @@ int main() {
     // Afficher le nombre d'éléments
     printf("Nombre d'éléments dans le tableau : %d\n", n);
     // Pour afficher les éléments du tableau :
-    printf("Contenu du tableau :\n");
+    printf("Contenu du tableau: ");
     for (int i = 0; i < n; i++) {
         //printf("Élément %d : %d\n", i, tableau[i]);
         printf("%d ", tableau[i]);
@@ -37,31 +50,49 @@ int main() {
             tableau_elements_uniques[taille_elements_uniques++] = tableau[i];
         }
     }
+    int wtu[taille_elements_uniques];
+
   printf("\n");
-  printf("Éléments uniques :\n");
+  printf("Éléments uniques: ");
     for (int i = 0; i < taille_elements_uniques; i++) {
         printf("%d ", tableau_elements_uniques[i]);
     }
     printf("\n");
-    int wtu[taille_elements_uniques];
+    int r=0;
     // Les positions paires représentent le début d'une arête et impaires la fin de celle-ci
     for (int i=0;i<taille_elements_uniques;i++){
         for (int j=0;j<n;j++){
             if (tableau_elements_uniques[i]==tableau[j]){
-                printf("%d %d ", j,tableau_elements_uniques[i]);
+                printf("%d      %d ", j,tableau_elements_uniques[i]);
                 if (j % 2 == 0){
                     printf("pair ");
-                    printf("%d \n", tableau[j+1]);
-                    
+                    printf(" %d ", tableau[j+1]);
+                    r = tableau[j+1];
                 }
                     else {
                     printf("impair ");
-                    printf("%d \n", tableau[j-1]);
+                    printf(" %d ", tableau[j-1]);
+                    r = tableau[j-1];
                     }
-                
+                printf("couple %d %d      ", tableau[j],r); 
+                for (int k = 0; k<taille_elements_uniques;k++){
+                    if (k+1 == r || k+1 == tableau_elements_uniques[i]){
+                        wtu[k]=1;
+                    }
+                        else {
+                        wtu[k]=0;
+                        }
+                    printf(" %d ", wtu[k]);
+                }
+printf("\n");
             }
-
-        }
+        } 
     }
+    printf("\n");
+  //parcourir le tableau initiale avec les pairs et les impairs et comparer le courant avec le suivant
+  for (int i=0; i < n-2;i=i+2){
+    printf("premier couple %d %d      ", tableau[i],tableau[i+1]); 
+    printf("deuxième couple %d %d \n", tableau[i+2],tableau[i+3]); 
+  }  
     return 0;
 }

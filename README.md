@@ -1,2 +1,2 @@
 # algo_1
-ce programme a pour but de vérifier si le tableau donné en entrée est un graphe convexe
+Ce travail en C permet de détecter si un graphe est connexe ou pas
