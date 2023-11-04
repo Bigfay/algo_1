@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-
 // VERSION NETTOYEE AVEC BUG A CORRIGER
-
 void couples_binaires(int a,int nombre[], int counter, int fer,int wtf[a]) {
     //int wtf[a];
     for (int k = 0;k<a;k++){
@@ -19,19 +17,15 @@ void couples_binaires(int a,int nombre[], int counter, int fer,int wtf[a]) {
 
 
 int main() {
-
     int tableau[] = {1, 2, 3, 2, 4, 3, 4, 5, 5, 9}; // Déclaration et initialisation du tableau
     //int tableau[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Déclaration et initialisation du tableau
     //int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,15,20}; // Déclaration et initialisation du tableau
-
 
  // Calculer le nombre d'éléments dans le tableau
     int n = sizeof(tableau) / sizeof(tableau[0]);
     int fin=0;
     int somme = 0;
-
     int somme_old=0;
-
     bool est_connexe;
     // Afficher le nombre d'éléments
     printf("Nombre d'éléments dans le tableau : %d\n", n);
@@ -125,7 +119,6 @@ int main() {
         est_connexe = true;
         break;
     }
-
     else if (z==n-2 && somme != somme_old){
         //if (z==n-2 && somme!=taille_elements_uniques){
              z=-2;
@@ -142,7 +135,7 @@ int main() {
              est_connexe = false;
              break;
     };
-
+     
     }
      printf("\n"); 
     
