@@ -4,8 +4,6 @@
 // VERSION NETTOYEE AVEC BUG A CORRIGER
 
 void couples_binaires(int a,int nombre[], int counter, int fer,int wtf[a]) {
-    //int wtf[a];
-    //a=9;
     for (int k = 0;k<a;k++){
                     if (k+1 == fer || k+1 == nombre[counter]){
                         wtf[k]=1;
@@ -22,7 +20,7 @@ void couples_binaires(int a,int nombre[], int counter, int fer,int wtf[a]) {
 int main() {
     //int tableau[] = {1, 2, 3, 2, 4, 3, 4, 5, 5, 9}; // Déclaration et initialisation du tableau - connexe
     //int tableau[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Déclaration et initialisation du tableau
-    int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,15,20}; // Déclaration et initialisation du tableau
+    int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,15,20}; // Déclaration et initialisation du tableau - connexe
 
 
  // Calculer le nombre d'éléments dans le tableau
@@ -94,9 +92,6 @@ int main() {
         wt_0[i]=wt_1[i];
     }
     printf("\n");
-    //wt_0=couples_binaires(taille_elements_uniques,tableau, 0,tableau[1],wt_1);
-    //comparaison entre wt_0 et wt_1
-    //wt_0 = wt_1 =1 alors fusionner les uns
     int merge =0;
   for (int z=2; z < n;z=z+2){
     couples_binaires(max,tableau, z,tableau[z+1],wt_1);
@@ -142,10 +137,6 @@ int main() {
              printf("Tour SUIVANT %d \n",fin);
              somme_old=somme;
              fin=fin+1;
-             //if (fin==4) {
-             /*printf("ce graphe n'est pas connexe \n");
-             est_connexe = false;*/
-            //break;
              }
     else if (z==n-2){
         printf("ce graphe n'est pas connexe \n");
