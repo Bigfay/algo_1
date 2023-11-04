@@ -81,7 +81,7 @@ int main() {
         printf("%d ", tableau_elements_uniques[i]);
     }
     printf("\n");
-    int r=0;
+    //int r=0;
     // Les positions paires représentent le début d'une arête et impaires la fin de celle-ci
     
   //parcourir le tableau initiale avec les pairs et les impairs et comparer le courant avec le suivant
