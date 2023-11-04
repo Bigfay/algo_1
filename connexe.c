@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-// VERSION NETTOYEE
+// VERSION NETTOYEE AVEC BUG A CORRIGER
 void couples_binaires(int a,int nombre[], int counter, int fer,int wtf[a]) {
     //int wtf[a];
     for (int k = 0;k<a;k++){
