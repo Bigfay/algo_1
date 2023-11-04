@@ -5,6 +5,7 @@
 
 void couples_binaires(int a,int nombre[], int counter, int fer,int wtf[a]) {
     //int wtf[a];
+    //a=9;
     for (int k = 0;k<a;k++){
                     if (k+1 == fer || k+1 == nombre[counter]){
                         wtf[k]=1;
@@ -63,8 +64,12 @@ int main() {
     int wt_0[taille_elements_uniques];
     int wt_1[taille_elements_uniques];
 
+
   printf("\n");
   printf("nombre d'éléments uniques : %d \n", taille_elements_uniques);
+  int check_taille_elements_uniques= taille_elements_uniques;
+  taille_elements_uniques=9;
+
   printf("Éléments uniques: ");
     for (int i = 0; i < taille_elements_uniques; i++) {
         printf("%d ", tableau_elements_uniques[i]);
@@ -118,7 +123,7 @@ int main() {
         //printf("\n somme : %d\n", somme);
         merge=0;
     }
-    if (somme==taille_elements_uniques){
+    if (somme==check_taille_elements_uniques){
         printf("ce graphe est connexe \n");
         est_connexe = true;
         break;
