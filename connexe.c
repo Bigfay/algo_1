@@ -4,9 +4,18 @@
 // VERSION NETTOYEE AVEC BUG A CORRIGER
 
 void couples_binaires(int max,int tableau[], int z, int e_suiv,int wtf[max]) {
-    for (int k = 0;k<max;k++){
-                    //if (k+1 == fer || k+1 == nombre[counter]){
+    /*for (int k = 0;k<max;k++){
                     if (k+1 == e_suiv || k+1 == tableau[z]){
+                        wtf[k]=1;
+                    }
+                        else {
+                        wtf[k]=0;
+                        }
+                    printf(" %d ", wtf[k]);
+    }*/
+    int e_uni[]={2,4,3};
+    for (int k = 0;k<3;k++){
+                    if (e_uni[k] == e_suiv || e_uni[k] == tableau[z]){
                         wtf[k]=1;
                     }
                         else {
@@ -18,9 +27,10 @@ void couples_binaires(int max,int tableau[], int z, int e_suiv,int wtf[max]) {
 
 
 int main() {
+    int tableau[] = {2, 4, 3, 2}; // Déclaration et initialisation du tableau - connexe
     //int tableau[] = {19, 2, 3, 2, 4, 3, 4, 5, 5, 9}; // Déclaration et initialisation du tableau - connexe
     //int tableau[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Déclaration et initialisation du tableau
-    int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,15,20}; // Déclaration et initialisation du tableau - connexe
+    //int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,15,20}; // Déclaration et initialisation du tableau - connexe
 
 
  // Calculer le nombre d'éléments dans le tableau
@@ -64,11 +74,11 @@ int main() {
             max=tableau_elements_uniques[i];
         }
     }
-    /* int wt_0[taille_elements_uniques];
-    int wt_1[taille_elements_uniques]; */
+     int wt_0[taille_elements_uniques];
+    int wt_1[taille_elements_uniques];
 
-    int wt_0[max];
-    int wt_1[max];
+    //int wt_0[max];
+    //int wt_1[max];
 
 
   printf("\n");
@@ -131,7 +141,6 @@ int main() {
         break;
     }
     else if (z==n-2 && somme != somme_old){
-        //if (z==n-2 && somme!=taille_elements_uniques){
              z=-2;
              printf("TOUR %d: \n",fin);
              somme_old=somme;
