@@ -21,7 +21,8 @@ void affichage_binaire(int taille_elements_uniques,int wt_0[taille_elements_uniq
     }
 }
 
-void construction_tableau_elements_uniques(int n,int tableau[n],int tableau_elements_uniques[],int taille_elements_uniques) {
+int construction_tableau_elements_uniques(int n,int tableau[n],int tableau_elements_uniques[n]) {
+    int taille_elements_uniques = 0;
     for (int i = 0; i < n; i++) {
         bool est_unique = true;
 
@@ -38,14 +39,15 @@ void construction_tableau_elements_uniques(int n,int tableau[n],int tableau_elem
             tableau_elements_uniques[taille_elements_uniques++] = tableau[i];
         }
     }
+    return taille_elements_uniques;
 }
 int main() {
-    //int tableau[] = {2, 15, 4, 3, 2, 3}; // Déclaration et initialisation du tableau - connexe
+    int tableau[] = {2, 15, 4, 3, 2, 3}; // Déclaration et initialisation du tableau - connexe
     //int tableau[] = {2, 15, 3, 2}; // Déclaration et initialisation du tableau - connexe
     //int tableau[] = {19, 2, 3, 2, 4, 3, 4, 5, 5, 90}; // Déclaration et initialisation du tableau - connexe
     //int tableau[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Déclaration et initialisation du tableau - pas connexe
     //int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,20,20}; // pas connexe
-    int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,15,20}; // connexe
+    //int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,15,20}; // connexe
 
 
  // Calculer le nombre d'éléments dans le tableau
@@ -68,25 +70,8 @@ int main() {
     int taille_elements_uniques = 0;
 
 //début construction tableau des valeurs distinctes
-
-    for (int i = 0; i < n; i++) {
-        bool est_unique = true;
-
-        // Vérifier si l'élément existe déjà dans le tableau des éléments uniques
-        for (int j = 0; j < taille_elements_uniques; j++) {
-            if (tableau[i] == tableau_elements_uniques[j]) {
-                est_unique = false;
-                break;
-            }
-        }
-
-        // Si l'élément est unique, l'ajouter au tableau des éléments uniques
-        if (est_unique) {
-            tableau_elements_uniques[taille_elements_uniques++] = tableau[i];
-        }
-    }
-
-//fin construction tableau des valeurs distinctes
+taille_elements_uniques= construction_tableau_elements_uniques(n,tableau,tableau_elements_uniques);
+   //fin construction tableau des valeurs distinctes
 
     int wt_0[taille_elements_uniques];
     int wt_1[taille_elements_uniques];
@@ -117,8 +102,8 @@ int main() {
   for (int z=2; z < n;z=z+2){
     couples_binaires(tableau_elements_uniques,taille_elements_uniques,tableau[z],tableau[z+1],wt_1);
 /*comparaison entre wt_0 et wt_1 pour voir s'il y a des positions communes contenant un 1
- si c'est le cas on fusionne les positions en 1
- si non le nouveau wt_1 devient et écrase le wt_0 et devient la nouvelle référence */
+ si c'est le cas on fusionne les positions en 1*/
+
         for (int j=0;j<taille_elements_uniques;j++){
             if (wt_0[j]==wt_1[j] && wt_0[j] ==1){          
                 j = taille_elements_uniques;
