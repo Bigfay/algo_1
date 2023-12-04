@@ -5,7 +5,8 @@
 
 void couples_binaires(int e_uni[], int taille_e_uni, int e_cour, int e_suiv, int wtf[taille_e_uni])
 {
-    for (int k = 0; k < taille_e_uni; k++)
+    int k = 0;
+    while (k < taille_e_uni)
     {
         if (e_uni[k] == e_suiv || e_uni[k] == e_cour)
         {
@@ -16,21 +17,25 @@ void couples_binaires(int e_uni[], int taille_e_uni, int e_cour, int e_suiv, int
             wtf[k] = 0;
         }
         printf(" %d ", wtf[k]);
+        k++;
     }
 }
 
 void affichage_binaire(int taille_elements_uniques, int wt_0[taille_elements_uniques])
 {
-    for (int i = 0; i < taille_elements_uniques; i++)
+    int i = 0;
+    while (i < taille_elements_uniques)
     {
         printf(" %d ", wt_0[i]);
+        i++;
     }
 }
 
 int construction_tableau_elements_uniques(int n, int tableau[n], int tableau_elements_uniques[n])
 {
     int taille_elements_uniques = 0;
-    for (int i = 0; i < n; i++)
+    int i = 0;
+    while (i < n)
     {
         bool est_unique = true;
 
@@ -49,17 +54,18 @@ int construction_tableau_elements_uniques(int n, int tableau[n], int tableau_ele
         {
             tableau_elements_uniques[taille_elements_uniques++] = tableau[i];
         }
+        i++;
     }
     return taille_elements_uniques;
 }
 int main()
 {
-    int tableau[] = {2, 15, 4, 3, 2, 3}; // Déclaration et initialisation du tableau - connexe
-    //int tableau[] = {2, 15, 3, 2}; // Déclaration et initialisation du tableau - connexe
-    // int tableau[] = {19, 2, 3, 2, 4, 3, 4, 5, 5, 90}; // Déclaration et initialisation du tableau - connexe
-    // int tableau[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Déclaration et initialisation du tableau - pas connexe
-    // int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,20,20}; // pas connexe
-    //int tableau[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 15, 20}; // connexe
+    // int tableau[] = {2, 15, 4, 3, 2, 3}; // Déclaration et initialisation du tableau - connexe
+    // int tableau[] = {2, 15, 3, 2}; // Déclaration et initialisation du tableau - connexe
+    //  int tableau[] = {19, 2, 3, 2, 4, 3, 4, 5, 5, 90}; // Déclaration et initialisation du tableau - connexe
+    //  int tableau[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Déclaration et initialisation du tableau - pas connexe
+    // int tableau[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 20, 20}; // pas connexe
+    int tableau[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 15, 20}; // connexe
 
     // Calculer le nombre d'éléments dans le tableau
     int n = sizeof(tableau) / sizeof(tableau[0]);
@@ -79,14 +85,14 @@ int main()
     int tableau_elements_uniques[n]; // déclaration et initialisation d'un tableau pour stocker les éléments distincts
     int taille_elements_uniques = 0;
 
-    taille_elements_uniques = construction_tableau_elements_uniques(n, tableau, tableau_elements_uniques); //construction tableau des valeurs distinctes
+    taille_elements_uniques = construction_tableau_elements_uniques(n, tableau, tableau_elements_uniques); // construction tableau des valeurs distinctes
     int wt_0[taille_elements_uniques];
     int wt_1[taille_elements_uniques];
 
     printf("\n");
     printf("nombre d'éléments distincts : %d \n", taille_elements_uniques);
     printf("Éléments distincts: ");
-    for (int i = 0; i < taille_elements_uniques; i++) //affichage des éléments distincts
+    for (int i = 0; i < taille_elements_uniques; i++) // affichage des éléments distincts
     {
         printf("%d ", tableau_elements_uniques[i]);
     }
@@ -101,14 +107,15 @@ int main()
         couples_binaires(tableau_elements_uniques, taille_elements_uniques, tableau[z], tableau[z + 1], wt_1);
         for (int j = 0; j < taille_elements_uniques; j++) // recherche d'éléments communs entre wt_0 et wt_1
         {
-            if (wt_0[j] == wt_1[j] && wt_0[j] == 1) //condition d'élément commun entre wt_0 et wt_1
+            if (wt_0[j] == wt_1[j] && wt_0[j] == 1) // condition d'élément commun entre wt_0 et wt_1
             {
                 merge = 1;
+                j = taille_elements_uniques;
             }
         }
         if (somme_old == 0) // cas particulier du premier couple qui est d'office mergé avec wt_0
         {
-            for (int j = 0; j < taille_elements_uniques; j++) //wt_0 remplacé par wt_1 pour le premier
+            for (int j = 0; j < taille_elements_uniques; j++) // wt_0 remplacé par wt_1 pour le premier
             {
                 wt_0[j] = wt_1[j];
                 somme_old = somme_old + wt_1[j];
@@ -122,8 +129,8 @@ int main()
                 {
                     wt_0[k] = 1;
                 }
-                merge = 0;
             }
+            merge = 0;
         }
         printf("      ");
         // affichage en notation binaire
@@ -134,7 +141,7 @@ int main()
         for (int i = 0; i < taille_elements_uniques; ++i)
         {
             somme += wt_0[i];
-            merge = 0;
+            // merge = 0;
         }
         if (somme == taille_elements_uniques) // condition de connexité
         {
