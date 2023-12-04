@@ -42,11 +42,11 @@ int construction_tableau_elements_uniques(int n,int tableau[n],int tableau_eleme
     return taille_elements_uniques;
 }
 int main() {
-    int tableau[] = {2, 15, 4, 3, 2, 3}; // Déclaration et initialisation du tableau - connexe
+    //int tableau[] = {2, 15, 4, 3, 2, 3}; // Déclaration et initialisation du tableau - connexe
     //int tableau[] = {2, 15, 3, 2}; // Déclaration et initialisation du tableau - connexe
     //int tableau[] = {19, 2, 3, 2, 4, 3, 4, 5, 5, 90}; // Déclaration et initialisation du tableau - connexe
     //int tableau[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Déclaration et initialisation du tableau - pas connexe
-    //int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,20,20}; // pas connexe
+    int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,20,20}; // pas connexe
     //int tableau[] = {16,16,7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16,12,12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3,15,20}; // connexe
 
 
@@ -90,25 +90,33 @@ taille_elements_uniques= construction_tableau_elements_uniques(n,tableau,tableau
     
   //parcourir le tableau initial avec les pairs et les impairs et comparer le courant avec le suivant
             printf("TOUR %d: \n",fin);
-            fin=fin+1;
-    couples_binaires(tableau_elements_uniques,taille_elements_uniques, tableau[0],tableau[1],wt_1);
+            //fin=fin+1;
+   // couples_binaires(tableau_elements_uniques,taille_elements_uniques, tableau[0],tableau[1],wt_1);
   // dupliquer le wt_1 dans le wt_0 pour le premier élément
-    for(int i = 0; i < taille_elements_uniques; ++i) {
+   /* for(int i = 0; i < taille_elements_uniques; ++i) {
         wt_0[i]=wt_1[i];
-    }
+    }*/
     printf("\n");
     int merge =0;
   
-  for (int z=2; z < n;z=z+2){
+  for (int z=0; z < n;z=z+2){
     couples_binaires(tableau_elements_uniques,taille_elements_uniques,tableau[z],tableau[z+1],wt_1);
 /*comparaison entre wt_0 et wt_1 pour voir s'il y a des positions communes contenant un 1
  si c'est le cas on fusionne les positions en 1*/
-
+        
+        
         for (int j=0;j<taille_elements_uniques;j++){
             if (wt_0[j]==wt_1[j] && wt_0[j] ==1){          
                 j = taille_elements_uniques;
                 merge=1;
             }   
+        }
+        if(somme_old==0){
+            for (int j=0;j<taille_elements_uniques;j++){
+                wt_0[j]=wt_1[j];
+                somme_old=somme_old+wt_1[j];
+            }
+
         }
     //fusion entre wt_0 et wt_1 s'il y a un élément commun entre les 2 couples
         if (merge ==1) {
@@ -139,7 +147,7 @@ taille_elements_uniques= construction_tableau_elements_uniques(n,tableau,tableau
         break;
     }
     else if (z==n-2 && somme != somme_old){
-             z=-2;
+             z=0;
              printf("TOUR %d: \n",fin);
              somme_old=somme;
              fin=fin+1;
