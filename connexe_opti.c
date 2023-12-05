@@ -64,15 +64,15 @@ int main()
     // int tableau[] = {2, 15, 3, 2}; // Déclaration et initialisation du tableau - connexe
     //  int tableau[] = {19, 2, 3, 2, 4, 3, 4, 5, 5, 90}; // Déclaration et initialisation du tableau - connexe
     //  int tableau[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Déclaration et initialisation du tableau - pas connexe
-    // int tableau[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 20, 20}; // pas connexe
-    int tableau[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 15, 20}; // connexe
+    int tableau[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 20, 20}; // pas connexe
+    //int tableau[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 15, 20}; // connexe
 
     // Calculer le nombre d'éléments dans le tableau
     int n = sizeof(tableau) / sizeof(tableau[0]);
     int fin = 1;       // compteur pour afficher le nombre de fois que le tableau est parcouru
     int somme = 0;     // permet de vérifier la connexité
     int somme_old = 0; // permet de définir la condition d'arrêt si pas de connexité
-    bool est_connexe;  // résultat produit connexe ou pas (true/false)
+    bool est_connexe =false;  // résultat produit connexe ou pas (true/false)
     int merge = 0;     // permet de fait l'union conditionnelle entre wt_0 et wt_1
     // Afficher le nombre d'éléments
     printf("Nombre d'éléments dans le tableau : %d\n", n);
@@ -102,7 +102,7 @@ int main()
     printf("TOUR %d: \n", fin);
     // dupliquer le wt_1 dans le wt_0 pour le premier élément
 
-    for (int z = 0; z < n; z = z + 2) // on parcourt le tableau par pas de 2
+    for (int z = 0; z < n && !est_connexe; z = z + 2) // on parcourt le tableau par pas de 2
     {
         couples_binaires(tableau_elements_uniques, taille_elements_uniques, tableau[z], tableau[z + 1], wt_1);
         for (int j = 0; j < taille_elements_uniques; j++) // recherche d'éléments communs entre wt_0 et wt_1
@@ -147,7 +147,7 @@ int main()
         {
             printf("ce graphe est connexe \n");
             est_connexe = true;
-            break;
+            //break;
         }
         else if (z == n - 2 && somme != somme_old) // condition pour recommencer le parcours
         {
@@ -160,8 +160,9 @@ int main()
         else if (z == n - 2) // condition d'absence de connexité
         {
             printf("ce graphe n'est pas connexe \n");
-            est_connexe = false;
-            break;
+            z=n;
+            //est_connexe = false;
+            //break;
         };
     }
     printf("\n");
