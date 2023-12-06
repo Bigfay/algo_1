@@ -88,11 +88,10 @@ int main()
     printf("\n"); // affichage tableau Les positions paires représentent le début d'une arête et impaires la fin de celle-ci
     // parcourir le tableau initial avec les pairs et les impairs et comparer le courant avec le suivant
     printf("TOUR %d: \n", fin);
-    n = n / 2; // nombe de couples
     int z = 0; // initialisation de la boucle
     while (z < n && !est_connexe)
     {
-        couples_binaires(tableau_elements_uniques, taille_elements_uniques, tableau[z * 2], tableau[2 * z + 1], wt_1);
+        couples_binaires(tableau_elements_uniques, taille_elements_uniques, tableau[z], tableau[z + 1], wt_1);
         for (int j = 0; j < taille_elements_uniques; j++) // recherche d'éléments communs entre wt_0 et wt_1
         {
             if (wt_0[j] == wt_1[j] && wt_0[j] == 1) // condition d'élément commun entre wt_0 et wt_1
@@ -132,7 +131,7 @@ int main()
             printf("\n ce graphe est connexe \n");
             est_connexe = true;
         }
-        else if (z == n - 1 && somme != somme_old) // condition pour recommencer le parcours
+        else if (z == n - 2 && somme != somme_old) // condition pour recommencer le parcours
         {
             z = 0;
             fin = fin + 1;
@@ -140,12 +139,12 @@ int main()
             printf("TOUR %d: \n", fin);
             somme_old = somme;
         }
-        else if (z == n - 1) // condition d'absence de connexité
+        else if (z == n - 2) // condition d'absence de connexité
         {
             printf("\n ce graphe n'est pas connexe \n");
             z = n;
         };
-        z = z + 1;
+        z = z + 2;
     }
     return est_connexe;
 }
