@@ -61,7 +61,7 @@ int main()
     //  int tab[] = {2, 15, 3, 2}; // Déclaration et initialisation du tableau - connexe
     // int tab[] = {19, 2, 3, 90, 4, 3, 4, 5, 5, 2}; // Déclaration et initialisation du tableau - connexe
     // int tab[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Déclaration et initialisation du tableau - pas connexe
-    // int tab[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 20, 20}; // pas connexe
+    //int tab[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 20, 20}; // pas connexe
     int tab[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 15, 20}; // connexe
 
     // Calculer le nombre d'éléments dans le tableau
@@ -103,23 +103,19 @@ int main()
         }
         if (merge == 1) // fusion entre wt_0 et wt_1 s'il y a un élément commun entre les 2 couples
         {
+            somme = 0;
             for (int k = 0; k < ted; k++)
             {
                 if (wt_1[k] == 1)
                 {
                     wt_0[k] = 1;
                 }
+                somme += wt_0[k];
             }
             merge = 0;
         }
         affichage_tableau(ted, wt_0); // affichage en notation binaire
-        somme = 0;
-        /* calcul de la somme des éléments de wt_0 après fusion avec wt_1*/
-        for (int i = 0; i < ted; ++i)
-        {
-            somme += wt_0[i];
-        }
-        if (somme == ted) // condition de connexité
+        if (somme == ted)             // condition de connexité
         {
             printf("\n ce graphe est connexe \n");
             est_connexe = true;
