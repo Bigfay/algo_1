@@ -79,7 +79,7 @@ bool calcul(int ed[], int ted, int tab[], int wt_1[], int wt_0[], int z, int fin
             }
         }
     }
-    for (int k = 0; k < ted; k++)
+    for (int k = 0; k < ted; k++) // recalcul de somme
     {
         somme += wt_0[k];
     }
@@ -109,19 +109,20 @@ bool calcul(int ed[], int ted, int tab[], int wt_1[], int wt_0[], int z, int fin
 int main()
 {
     // int tab[] = {2, 15, 4, 3, 2, 3}; // Déclaration et initialisation du tableau - connexe
+    int tab[] = {15, 15}; // Déclaration et initialisation du tableau - connexe
     // int tab[] = {2, 15, 3, 2}; // Déclaration et initialisation du tableau - connexe
     // int tab[] = {19, 2, 3, 90, 4, 3, 4, 5, 5, 2}; // Déclaration et initialisation du tableau - connexe
     // int tab[] = {1, 2, 3, 9, 5, 6, 7, 8, 9, 2}; // Déclaration et initialisation du tableau - pas connexe
     // int tab[] = {1, 2, 3, 9, 5, 6, 7, 8, 9, 2, 7, 6}; // Déclaration et initialisation du tableau - pas connexe
     // int tab[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 20, 20}; // pas connexe
-    int tab[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 15, 20}; // connexe
+    // int tab[] = {16, 16, 7, 8, 11, 12, 3, 4, 9, 10, 5, 6, 13, 14, 15, 1, 16, 12, 12, 13, 8, 9, 10, 11, 4, 5, 6, 7, 1, 2, 14, 15, 2, 3, 15, 20}; // connexe
 
     // Calculer le nombre d'éléments dans le tableau
     int n = sizeof(tab) / sizeof(tab[0]);
     int fin = 1;              // compteur pour afficher le nombre de fois que le tableau est parcouru
     int somme = 0;            // permet de vérifier la connexité
     int somme_old = 0;        // permet de définir la condition d'arrêt si pas de connexité
-    bool est_connexe = false; // résultat produit connexe ou pas (true/false)
+    bool est_connexe; // résultat produit connexe ou pas (true/false)
     int merge = 0;            // permet de fait l'union conditionnelle entre wt_0 et wt_1
     // Afficher le nombre d'éléments
     printf("Nombre d'éléments dans le tableau : %d\n", n);
@@ -141,5 +142,5 @@ int main()
     couples_binaires(ed, ted, tab[0], tab[1], wt_0);
     printf("\n");
     printf("TOUR %d: \n", fin);
-    calcul(ed, ted, tab, wt_1, wt_0, 2, fin, n, somme_old);
+    est_connexe = calcul(ed, ted, tab, wt_1, wt_0, 0, fin, n, somme_old);
 }

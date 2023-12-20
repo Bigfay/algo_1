@@ -4,7 +4,7 @@
       "name": "(gdb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "/home/ubuntu/algo_1/algo_1/connexe_rec",
+      "program": "/home/ubuntu/algo_1/algo_1/connexe_rec_def",
       "args": [],
       "stopAtEntry": false,
       "cwd": "/home/ubuntu/algo_1/algo_1",
