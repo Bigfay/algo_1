@@ -60,6 +60,12 @@ bool calcul(int ed[], int ted, int tab[], int wt_1[], int wt_0[], int z, int fin
     int somme = 0;
     int merge = 0;
     bool est_connexe = false;
+    if (n == 2)
+    {
+        printf("\n ce graphe est connexe \n");
+        est_connexe = true;
+        return est_connexe;
+    }
     couples_binaires(ed, ted, tab[z], tab[z + 1], wt_1);
     for (int j = 0; j < ted; j++) // recherche d'éléments communs entre wt_0 et wt_1
     {
@@ -119,11 +125,11 @@ int main()
 
     // Calculer le nombre d'éléments dans le tableau
     int n = sizeof(tab) / sizeof(tab[0]);
-    int fin = 1;              // compteur pour afficher le nombre de fois que le tableau est parcouru
-    int somme = 0;            // permet de vérifier la connexité
-    int somme_old = 0;        // permet de définir la condition d'arrêt si pas de connexité
-    bool est_connexe; // résultat produit connexe ou pas (true/false)
-    int merge = 0;            // permet de fait l'union conditionnelle entre wt_0 et wt_1
+    int fin = 1;       // compteur pour afficher le nombre de fois que le tableau est parcouru
+    int somme = 0;     // permet de vérifier la connexité
+    int somme_old = 0; // permet de définir la condition d'arrêt si pas de connexité
+    bool est_connexe;  // résultat produit connexe ou pas (true/false)
+    int merge = 0;     // permet de fait l'union conditionnelle entre wt_0 et wt_1
     // Afficher le nombre d'éléments
     printf("Nombre d'éléments dans le tableau : %d\n", n);
     // Pour afficher les éléments du tableau :
