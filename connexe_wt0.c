@@ -3,20 +3,20 @@
 
 // VERSION ITERATIVE avec fonctions
 
-void couples_binaires(int ed[], int ted, int e_cour, int e_suiv, int wtf[ted])
+void couples_binaires(int ed[], int ted, int e_cour, int e_suiv, int wtr[ted])
 {
     int k = 0;
     while (k < ted)
     {
         if (ed[k] == e_suiv || ed[k] == e_cour)
         {
-            wtf[k] = 1;
+            wtr[k] = 1;
         }
         else
         {
-            wtf[k] = 0;
+            wtr[k] = 0;
         }
-        printf(" %d ", wtf[k]);
+        printf(" %d ", wtr[k]);
         k++;
     }
 }
